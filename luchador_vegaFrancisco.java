@@ -19,11 +19,7 @@ public class luchador_vegaFrancisco {
     int estrellas;
     int ramdom = (int) Math.random();
 
-    public static void main(String[] args) {
-      luchador lucha= new luchador( );
-      
-   }
-    
+ 
     
   public int defectohp(){
       
