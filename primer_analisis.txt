@@ -1,0 +1,9 @@
+Nuestra clase luchador tiene la capacidad de crear un luchador ,nuestra clase inventarioLuchadores utiliza la 
+clase luchador para crear o eliminar luchadores por lo que depende de la clase principal
+
+Un luchador usa un objeto por lo que no depende de el y solo tiene relacion de uso con la clase ObjetoEquipable.
+
+En el caso del mounstruo se da un caso similar al de luchador con ObjetoEquipable solo lo usa y no depende de el.
+
+La clase InventarioObjeto depende de la clase Objetoequipable por lo que no tendria sentido que exista sin esta.
+
