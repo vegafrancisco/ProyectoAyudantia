@@ -19,6 +19,7 @@ public class Monstruo {
     private int SPD;
     private int DEF;
     private String faccion;
+    private ObjetoEquipable objetodrop;
     
     public Monstruo(){
        crearMonstruo();
@@ -67,7 +68,7 @@ public class Monstruo {
            
    }
    private void crearObjetoDropeable(){
-       ObjetoEquipable objetodrop=new ObjetoEquipable();
+       objetodrop=new ObjetoEquipable();
        System.out.println("Posible drop :");
        objetodrop.MostrarObjeto();
    }
