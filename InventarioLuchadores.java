@@ -13,28 +13,38 @@ import javax.swing.JOptionPane;
  *
  * @author Lenovo
  */
-public class InventarioLuchadores {
-
+public class InventarioLuchadores extends luchador{
+ 
     ArrayList<luchador> inventario = new ArrayList<>();
 
+    public ArrayList<luchador> getLuchadores() {
+        return inventario;
+    }
+
+    public void setLuchadores(ArrayList<luchador> inventario) {
+        this.inventario = inventario;
+    }
+    
     private void eliminarLuchadores(int Nluchador) {
         inventario.remove(Nluchador);
     }
 
-    private void agregarLuchadores() {
-
-        int numero = Integer.parseInt(JOptionPane.showInputDialog("numero de luchadores"));
-        for (int i = 0; i < numero; i++) {
+    public void agregarLuchadores() {
+    
+//      int numero = Integer.parseInt(JOptionPane.showInputDialog("numero de luchadores"));
+//      for (int i = 0; i < numero; i++) {
+  if(inventario.size()<25){
             inventario.add(new luchador());
 
-        }
-
+//      }
+  }
     }
 
-    private void CantidadDeLuchadores() {
+   public  int CantidadDeLuchadores() {
         int cantidad = inventario.size();
-        System.out.println("Actualmente tenemos a " + (cantidad) + " luchadores listos para combatir");
-    }
+        
+     return this.inventario.size();
+   }
 
     private void mostrar1(int numeroluchador) {
 
@@ -42,7 +52,7 @@ public class InventarioLuchadores {
 
     }
 
-    private void mostrarTODOS() {
+   public void mostrarTODOS() {
 
         for (luchador corre : inventario) {
             corre.mostrar();
@@ -86,13 +96,16 @@ public class InventarioLuchadores {
 //            object.mostrar();
 //        }
 //    }
+    
     public static void main(String[] args) {
         InventarioLuchadores invent = new InventarioLuchadores();
-
+        
+     
         invent.agregarLuchadores();
         invent.mostrarTODOS();
+        
         System.out.println("");
-
     }
+    
 
 }

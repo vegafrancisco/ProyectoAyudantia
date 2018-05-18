@@ -12,15 +12,12 @@ import javax.swing.JOptionPane;
  *
  * @author Lenovo
  */
-public class InventarioObjetos {
+public class InventarioObjetos extends ObjetoEquipable {
 
     ArrayList<ObjetoEquipable> Objetos = new ArrayList<>();
 
-    public InventarioObjetos() {
-
-    }
-
-    private void AgregarObjetos() {
+   
+    public void AgregarObjetos() {
         int numero = Integer.parseInt(JOptionPane.showInputDialog("numero de Objetos"));
         for (int i = 0; i < numero; i++) {
             Objetos.add(new ObjetoEquipable());
@@ -56,11 +53,6 @@ public class InventarioObjetos {
         InventarioObjetos invenObj = new InventarioObjetos();
         invenObj.AgregarObjetos();
         invenObj.MostrartodosObj();
-        System.out.println("");
-        invenObj.EliminarObjetos();
-        invenObj.MostrartodosObj();
-        System.out.println("");
-        invenObj.FiltroRango();
         
     }
 }

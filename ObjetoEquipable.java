@@ -18,12 +18,16 @@ public class ObjetoEquipable {
     private int mejoraBase;
     private int estrellas;
     private String NombreObj;
-
+    private luchador Luchador;
     Random random = new Random();
 
     public ObjetoEquipable() {
         
-        estadisticas();
+       this.estrellas=rango();
+       
+        this.mejoraTotal = getmejoraBase()*estrellas;
+        this.NombreObj = ElegirObj(NombreObjetos(), CantidadObjetos());
+        this.Caracteristicas=Elegircaracteristica(Caracteristicas());
 
     }
 
@@ -37,7 +41,7 @@ public class ObjetoEquipable {
         return NombreObj;
 
     }
-    private ArrayList<String>Caracteristicas (){
+    public ArrayList<String>Caracteristicas (){
         ArrayList<String>caracteristicas=new ArrayList<>();
         caracteristicas.add("ATK");
         caracteristicas.add("DEF");
@@ -45,7 +49,9 @@ public class ObjetoEquipable {
         caracteristicas.add("SPD");
         return caracteristicas;
     }
-    private String Elegircaracteristica(ArrayList<String>caracteristicas){
+    public String Elegircaracteristica(ArrayList<String>caracteristicas){
+        
+        
     return Caracteristicas=caracteristicas.get(random.nextInt(3));
     
     }
@@ -56,10 +62,13 @@ public class ObjetoEquipable {
         return Cantidad;
     }
 
-    private int mejoraBase() {
+   private int getmejoraBase() {
         mejoraBase = random.nextInt(9) + 1;
         return this.mejoraBase;
     }
+   private void setmejoraBase(int mejoraBase){
+       this.mejoraBase=mejoraBase;
+   }
 
     private int rango() {
         
@@ -97,12 +106,17 @@ public class ObjetoEquipable {
         System.out.println("Objeto " + NombreObj + "\t Mejora base:" + mejoraBase + "\t Rango:"+estrellas+"\t Mejora Total: ++"+mejoraTotal+" "+Caracteristicas);
     }
     public void MostrarRango(){
-        System.out.println(""+NombreObj+"\t Estrellas :"+estrellas);
+        System.out.println(""+NombreObj+"\tEstrellas :"+estrellas);
     }
-    private int mejoraTotal(int mejoraBase, int estrellas) {
-        int mejora = mejoraBase * estrellas;
-        return mejora;
+    public void setmejoraTotal(int mejoraTotal){
+        this.mejoraTotal=mejoraTotal;
     }
+    public int getmejoraTotal() {
+        this.mejoraTotal=mejoraTotal;
+        
+        return this.mejoraTotal;
+    }
+    
 
     private String ElegirObj(ArrayList<String> NombresObj, int Objetoscantidad) {
 
@@ -111,13 +125,10 @@ public class ObjetoEquipable {
     }
    
     
+   
+    
          
      
-    public void estadisticas() {
-
-        this.mejoraTotal = mejoraTotal(mejoraBase(), rango());
-        this.NombreObj = ElegirObj(NombreObjetos(), CantidadObjetos());
-        this.Caracteristicas=Elegircaracteristica(Caracteristicas());
-    }
+    
 
 }
