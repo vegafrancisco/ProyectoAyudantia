@@ -23,13 +23,28 @@ public class luchador {
     private int DEF;
     private int SPD;
     private int estrella;
+    private ObjetoEquipable equipo;
     Random random = new Random();
 
+  
     luchador() {
-        estadistica();
+        estrella = star();
+
+       this.hp=getdefectohp()*estrella;
+       this.DEF=getdefectoDEF()*estrella;
+       this.SPD=getdefectoSPD()*estrella;
+       this.ATK=getdefectoATK()*estrella;
+     
+//        this.ATK = defectoXestrellas(getdefectoATK(), estrella);
+//        this.DEF = defectoXestrellas(defectoDEF(), estrella);
+//        this.SPD = defectoXestrellas(defectoSPD(), estrella);
+        nombres = nombre(nombres());
+        faccion = faccion1(faccion());
+        equipar(equipo);
+        
     }
 
-    private ArrayList<String> nombres() {
+    public ArrayList<String> nombres() {
         ArrayList<String> nombres = new ArrayList<>();
         nombres.add("zel");
         nombres.add("pol");
@@ -44,57 +59,66 @@ public class luchador {
         nombres.add("fin");
         nombres.add("drake");
         nombres.add("zolivan");
-        nombres.add("fringa");
+        nombres.add("fritanga");
         nombres.add("hack");
         return nombres;
     }
 
-    private String nombre(ArrayList<String> nombres) {
+    public String nombre(ArrayList<String> nombres) {
         String nombre = nombres.get(random.nextInt(15));
 
         return nombre;
     }
 
-    private int defectohp() {
+    
 
-        int defecto = (int) (random.nextInt(300) + 200);
-        return defecto;
+    public int getdefectohp() {
+
+     this.hp = (int) (random.nextInt(300) + 200);
+        return this.hp;
+    }
+ public void setdefectohp(int hp){
+        this.hp=hp;
+    }
+    public int getdefectoATK() {
+
+       this.ATK = (int) (random.nextInt(50) + 20);
+        return this.ATK;
+    }
+public void setdefectoATK(int ATK){
+        this.ATK=ATK;
+    }
+    public int getdefectoDEF() {
+
+        this.DEF = (int) ((random.nextInt(21) + 5));
+        return this.DEF;
+    }
+    public void setdefectoSPD(int SPD){
+        this.SPD=SPD;
+    }
+    public int getdefectoSPD() {
+
+         this.SPD = (int) (random.nextInt(91) + 10);
+        return this.SPD;
     }
 
-    private int defectoATK() {
-
-        int defecto = (int) (random.nextInt(50) + 20);
-        return defecto;
-    }
-
-    private int defectoDEF() {
-
-        int defecto = (int) ((random.nextInt(21) + 5));
-        return defecto;
-    }
-
-    private int defectoSPD() {
-
-        int defecto = (int) (random.nextInt(91) + 10);
-        return defecto;
-    }
-
-    private int defectoXestrellas(int defecto, int estrella) {
+    public int defectoXestrellas(int defecto, int estrella) {
         int total = defecto * this.estrella;
         return total;
     }
-
-    public void estadistica() {
-        estrella = star();
-        this.hp = defectoXestrellas(defectohp(), estrella);
-
-        this.ATK = defectoXestrellas(defectoATK(), estrella);
-        this.DEF = defectoXestrellas(defectoDEF(), estrella);
-        this.SPD = defectoXestrellas(defectoSPD(), estrella);
-        nombres = nombre(nombres());
-        faccion = faccion1(faccion());
-
-    }
+   
+//    public void estadistica() {
+//        estrella = star();
+//
+//        
+//
+//        this.ATK = defectoXestrellas(defectoATK(), estrella);
+//        this.DEF = defectoXestrellas(defectoDEF(), estrella);
+//        this.SPD = defectoXestrellas(defectoSPD(), estrella);
+//        nombres = nombre(nombres());
+//        faccion = faccion1(faccion());
+//        equipar();
+//    }
 
     private ArrayList<String> faccion() {
         ArrayList faccion = new ArrayList();
@@ -131,6 +155,20 @@ public class luchador {
             estrella = 5;
         }
         return this.estrella; // con this o no me toma el numero de la estrella de forma correcta 
+    }
+
+    
+    private void equipar(ObjetoEquipable equipo) {
+        equipo = new ObjetoEquipable();
+        if ("Armadura" == equipo.Elegircaracteristica(equipo.Caracteristicas())){
+           this.hp=this.hp+equipo.getmejoraTotal();      
+    }else if("Botas" == equipo.Elegircaracteristica(equipo.Caracteristicas())){
+           this.SPD=this.SPD+equipo.getmejoraTotal();
+    }else if("Escudo" == equipo.Elegircaracteristica(equipo.Caracteristicas())){
+          this.DEF=this.DEF+equipo.getmejoraTotal();
+    }else if ("Arma" == equipo.Elegircaracteristica(equipo.Caracteristicas())){
+          this.ATK=this.ATK+equipo.getmejoraTotal();
+    }
     }
 
     public void MostrarFiltro() {
